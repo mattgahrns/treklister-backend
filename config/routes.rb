@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   post '/signup', to: 'users#create'
   get '/current_user', to: 'auth#show'
+  post '/users/:id/new/trip', to: 'trips#create'
 end
