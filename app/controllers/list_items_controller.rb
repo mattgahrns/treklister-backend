@@ -2,8 +2,8 @@ class ListItemsController < ApplicationController
     def create
         list_item = ListItem.new(list_item_params)
         list = List.find_by(id: params[:id])
-        # byebug
         list_item.list_id = list.id
+        list_item.isChecked = false
         if list_item.save
             render json: list_item
         else
