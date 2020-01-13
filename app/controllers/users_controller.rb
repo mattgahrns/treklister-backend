@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     def trips
         user = User.find_by(id: params[:id])
         trips = Trip.where(user_id: user.id)
-        render json: { trips: trips }
+        render json: trips
     end
 
     private
