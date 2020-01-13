@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/users/:id/trips', to: 'users#trips'
   get '/trip/:id', to: 'trips#show'
   get '/trip/:id/lists', to: 'trips#lists'
+  post '/list/:id/new/item', to: 'list_items#create'
 end

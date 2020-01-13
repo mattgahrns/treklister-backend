@@ -20,7 +20,7 @@ class TripsController < ApplicationController
 
     def update
         trip = Trip.find_by(id: params[:id])
-        if ptripupdate(trip_params)
+        if trip.update(trip_params)
             render json: { message: 'Trip updated!' }
         else
             render json: { message: 'Trip could not be edited. Please try again.' }
@@ -38,7 +38,7 @@ class TripsController < ApplicationController
         after_list = List.where(["trip_id = ? and before = ?", trip.id, false])
         before_items = ListItem.where("list_id = ?", before_list[0].id)
         after_items = ListItem.where("list_id = ?", after_list[0].id)
-        render json: { before_items: before_items, after_itmes: after_items }
+        render json: { before_items: before_items, after_items: after_items, before_list: before_list, after_list: after_list }
     end
 
     private
