@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post '/users/:id/new/trip', to: 'trips#create'
   get '/users/:id/trips', to: 'users#trips'
   get '/trip/:id', to: 'trips#show'
-  get 'trip/:id/lists', to: 'trips#lists'
+  get '/trip/:id/lists', to: 'trips#lists'
 end

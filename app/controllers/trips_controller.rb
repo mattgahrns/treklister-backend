@@ -34,11 +34,11 @@ class TripsController < ApplicationController
 
     def lists
         trip = Trip.find_by(id: params[:id])
-        before_list = List.where(["trip_id = ? and before = ?", trip.id, true]
+        before_list = List.where(["trip_id = ? and before = ?", trip.id, true])
         after_list = List.where(["trip_id = ? and before = ?", trip.id, false])
-        before_items = ListItem.where("list_id = ?", before_list.id)
-        after_items = ListItem.where("list_id = ?", after_list.id)
-        render json: { before_items, after_items }
+        before_items = ListItem.where("list_id = ?", before_list[0].id)
+        after_items = ListItem.where("list_id = ?", after_list[0].id)
+        render json: { before_items: before_items, after_itmes: after_items }
     end
 
     private
