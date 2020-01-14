@@ -13,7 +13,6 @@ class ListItemsController < ApplicationController
 
     def show
         list_item = ListItem.find_by(id: params[:id])
-        # byebug
         render json: list_item 
     end
 

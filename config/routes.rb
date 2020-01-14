@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post '/list/:id/new/item', to: 'list_items#create'
   delete '/item/:id/delete', to: 'list_items#destroy'
   get 'item/:id/', to: 'list_items#show'
+  put 'item/:id/edit', to: 'list_items#update'
 end
