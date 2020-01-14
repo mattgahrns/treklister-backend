@@ -22,7 +22,10 @@ class ListItemsController < ApplicationController
 
     def destroy
         list_item = ListItem.find_by(id: params[:id])
+        list = List.find_by(id: list_item.list_id)
         list_item.destroy
+        list_items = ListItem.where('list_id = ?',  list.id)
+        render json: { list_items: list_items, list: list }
     end
 
     private
