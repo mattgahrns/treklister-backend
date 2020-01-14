@@ -11,6 +11,12 @@ class ListItemsController < ApplicationController
         end
     end
 
+    def show
+        list_item = ListItem.find_by(id: params[:id])
+        # byebug
+        render json: list_item 
+    end
+
     def update
         list_item = ListItem.find_by(id: params[:id])
         if list_item.update(list_item_params)
