@@ -12,7 +12,7 @@ class ListItemsController < ApplicationController
     end
 
     def update
-        list_item = Item.find_by(id: params[:id])
+        list_item = ListItem.find_by(id: params[:id])
         if list_item.update(list_item_params)
             render json: { message: 'List Item updated!' }
         else
@@ -21,7 +21,7 @@ class ListItemsController < ApplicationController
     end
 
     def destroy
-        list_item = Item.find_by(id: params[:id])
+        list_item = ListItem.find_by(id: params[:id])
         list_item.destroy
     end
 
