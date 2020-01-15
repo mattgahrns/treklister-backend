@@ -20,9 +20,12 @@ class ListItemsController < ApplicationController
         list_item = ListItem.find_by(id: params[:id])
         if list_item.isChecked == true
             list_item.isChecked = false
+            list_item.save
         else
             list_item.isChecked = true
+            list_item.save
         end
+        render json: list_item
     end
 
     def update

@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   delete '/item/:id/delete', to: 'list_items#destroy'
   get 'item/:id/', to: 'list_items#show'
   put 'item/:id/edit', to: 'list_items#update'
-  post 'item/:id/check', to: 'list_items#check'
+  put 'item/:id/check', to: 'list_items#check'
 end
