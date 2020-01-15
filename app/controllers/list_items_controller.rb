@@ -19,7 +19,7 @@ class ListItemsController < ApplicationController
     def update
         list_item = ListItem.find_by(id: params[:id])
         if list_item.update(list_item_params)
-            render json: { message: 'List Item updated!' }
+            render json: { message: 'List Item updated!', list_item: list_item }
         else
             render json: { message: 'List Item could not be edited. Please try again.' }
         end
