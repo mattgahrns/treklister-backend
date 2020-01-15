@@ -36,13 +36,13 @@ class TripsController < ApplicationController
         trip = Trip.find_by(id: params[:id])
         before_list = List.where(["trip_id = ? and before = ?", trip.id, true])
         after_list = List.where(["trip_id = ? and before = ?", trip.id, false])
-        before_items = ListItem.where("list_id = ?", before_list[0].id)
-        after_items = ListItem.where("list_id = ?", after_list[0].id)
+        before_items = ListItem.where("list_id = ?", before_list[0].id).order("created_at")
+        after_items = ListItem.where("list_id = ?", after_list[0].id).order("created_at")
         render json: { before_items: before_items, after_items: after_items, before_list: before_list, after_list: after_list }
     end
 
     private
     def trip_params
-        params.require(:trip).permit(:name)
+        params.require(:trip).permit(:name, :description)
     end
 end

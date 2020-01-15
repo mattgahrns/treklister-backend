@@ -11,18 +11,26 @@ class ListItemsController < ApplicationController
         end
     end
 
+    def show
+        list_item = ListItem.find_by(id: params[:id])
+        render json: list_item 
+    end
+
     def update
-        list_item = Item.find_by(id: params[:id])
+        list_item = ListItem.find_by(id: params[:id])
         if list_item.update(list_item_params)
-            render json: { message: 'List Item updated!' }
+            render json: { message: 'List Item updated!', list_item: list_item }
         else
             render json: { message: 'List Item could not be edited. Please try again.' }
         end
     end
 
     def destroy
-        list_item = Item.find_by(id: params[:id])
+        list_item = ListItem.find_by(id: params[:id])
+        list = List.find_by(id: list_item.list_id)
         list_item.destroy
+        list_items = ListItem.where('list_id = ?',  list.id)
+        render json: { list_items: list_items, list: list }
     end
 
     private

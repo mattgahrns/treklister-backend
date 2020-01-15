@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get '/trip/:id', to: 'trips#show'
   get '/trip/:id/lists', to: 'trips#lists'
   post '/list/:id/new/item', to: 'list_items#create'
+  delete '/item/:id/delete', to: 'list_items#destroy'
+  get 'item/:id/', to: 'list_items#show'
+  put 'item/:id/edit', to: 'list_items#update'
 end
