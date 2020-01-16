@@ -12,7 +12,7 @@ class UsersController < ApplicationController
             render json: { user: @user,
             jwt: @token }, status: :created
         else
-            render json: { error: 'failed to create user'}, status: :not_acceptable
+            render json: { error: 'Failed to create user, username already taken!'}, status: :not_acceptable
         end
     end
 
