@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     def update
         trip = Trip.find_by(id: params[:id])
         if trip.update(trip_params)
-            render json: { message: 'Trip updated!' }
+            render json: { message: 'Trip updated!',  trip: trip}
         else
             render json: { message: 'Trip could not be edited. Please try again.' }
         end
