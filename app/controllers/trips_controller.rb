@@ -30,6 +30,7 @@ class TripsController < ApplicationController
     def destroy
         trip = Trip.find_by(id: params[:id])
         trip.destroy
+        render json: { message: 'Trip deleted!' }
     end
 
     def lists
