@@ -22,6 +22,15 @@ class UsersController < ApplicationController
         render json: trips
     end
 
+    def update
+        user = User.find_by(id: params[:id])
+        if user.update(user_params)
+            render json: { message: 'User updated!', user: user }
+        else
+            render json: { message: 'User could not be edited. Please try again.' }
+        end
+    end
+
     def destroy
         user = User.find_by(id: params[:id])
         user.destroy
