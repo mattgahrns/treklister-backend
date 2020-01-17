@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   delete '/users/:id/delete', to: 'users#destroy'
   put '/users/:id/edit', to: 'users#update'
   put '/users/:id/change/password', to: 'users#change_password'
+  delete '/trips/:id/delete', to: 'trips#destroy'
+  put 'trips/:id/edit', to: 'trips#update'
 end
