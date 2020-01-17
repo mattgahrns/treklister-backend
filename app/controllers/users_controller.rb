@@ -22,6 +22,30 @@ class UsersController < ApplicationController
         render json: trips
     end
 
+    def update
+        user = User.find_by(id: params[:id])
+        if user.update(user_params)
+            render json: { message: 'User updated!', user: user }
+        else
+            render json: { message: 'User could not be edited. Please try again.' }
+        end
+    end
+
+    def change_password
+        user = User.find_by(id: params[:id])
+        if user.update(user_params)
+            render json: { message: 'Password updated!'}
+        else
+            render json: { message: 'Password could not be updated. Please try again.' }
+        end
+    end
+
+    def destroy
+        user = User.find_by(id: params[:id])
+        user.destroy
+        render json: { message: 'Account deleted!' }
+    end
+
     private
     def user_params
         params.require(:user).permit(:first_name, :last_name, :username, :password)
