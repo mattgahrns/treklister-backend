@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   put '/list/:id/uncheck/all', to: 'lists#uncheck_all'
   delete '/users/:id/delete', to: 'users#destroy'
   put '/users/:id/edit', to: 'users#update'
+  put '/users/:id/change/password', to: 'users#change_password'
 end

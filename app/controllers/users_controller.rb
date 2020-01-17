@@ -31,6 +31,15 @@ class UsersController < ApplicationController
         end
     end
 
+    def change_password
+        user = User.find_by(id: params[:id])
+        if user.update(user_params)
+            render json: { message: 'Password updated!'}
+        else
+            render json: { message: 'Password could not be updated. Please try again.' }
+        end
+    end
+
     def destroy
         user = User.find_by(id: params[:id])
         user.destroy
