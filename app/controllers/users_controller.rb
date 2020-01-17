@@ -22,6 +22,12 @@ class UsersController < ApplicationController
         render json: trips
     end
 
+    def destroy
+        user = User.find_by(id: params[:id])
+        user.destroy
+        render json: { message: 'Account deleted!' }
+    end
+
     private
     def user_params
         params.require(:user).permit(:first_name, :last_name, :username, :password)
